@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ECH Myanmar QR Cards — MAEU</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f5f5f7; }
+    h1 { color: #1d1d1f; }
+    p { color: #6e6e73; margin-bottom: 20px; }
+    .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px; }
+    .card {
+      border: 2px solid #007AFF;
+      padding: 15px;
+      text-align: center;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .card h3 { font-size: 0.8rem; color: #007AFF; margin: 0 0 8px; letter-spacing: 0.03em; }
+    .card img { border-radius: 8px; display: block; margin: 0 auto; }
+    .card p { font-size: 0.78rem; color: #3d3d3f; margin: 8px 0 0; font-weight: 600; }
+    @media print {
+      body { background: white; padding: 10px; }
+      .grid { gap: 8px; }
+      .card {
+        border: 1px solid #000;
+        page-break-inside: avoid;
+        box-shadow: none;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>🏛️ ECH Myanmar — Student QR Cards (MAEU)</h1>
+  <p>Print → Cut → Laminate → Give to students</p>
+
+  <div class="grid" id="qrGrid"></div>
+
+  <script>
+    const students = [
+      // Add real student names here (up to 50).
+      // Any slots left blank will show the student ID instead.
+    ];
+
+    const grid = document.getElementById('qrGrid');
+
+    for (let i = 1; i <= 50; i++) {
+      const id = `ECHMAEU${i.toString().padStart(3, '0')}`;
+      const name = students[i - 1] || id;
+      const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(id)}`;
+
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${id}</h3>
+        <img src="${qrUrl}" alt="${id}" width="150" height="150">
+        <p>${name}</p>
+      `;
+      grid.appendChild(card);
+    }
+  </script>
+</body>
+</html>

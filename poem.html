@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="English poems for Myanmar learners — practice rhythm, vocabulary, and expression through poetry at ECH Myanmar." />
+  <title>Poems — ECH Myanmar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue: #0071e3;
+      --blue-hover: #0077ed;
+      --blue-light: rgba(0, 113, 227, 0.09);
+      --blue-border: rgba(0, 113, 227, 0.22);
+      --glass-bg: rgba(255, 255, 255, 0.76);
+      --glass-bg-dark: rgba(248, 248, 250, 0.88);
+      --glass-border: rgba(0, 0, 0, 0.07);
+      --glass-shadow: 0 4px 28px rgba(0, 0, 0, 0.06);
+      --radius: 22px;
+      --radius-sm: 13px;
+      --text-primary: #1d1d1f;
+      --text-secondary: #3d3d3f;
+      --text-muted: #6e6e73;
+      --nav-h: 70px;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-poem: 'Lora', Georgia, serif;
+      --transition: 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--font);
+      background: #f5f5f7;
+      min-height: 100vh;
+      color: var(--text-primary);
+      line-height: 1.6;
+      padding-top: var(--nav-h);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 18% 8%, rgba(0, 113, 227, 0.055) 0%, transparent 58%),
+        radial-gradient(ellipse at 82% 85%, rgba(0, 113, 227, 0.035) 0%, transparent 58%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+      display: flex;
+      align-items: center;
+      padding: 0 2rem;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+    }
+
+    .nav-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .nav-logo-fallback {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0, 113, 227, 0.28);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .brand-text span:first-child {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .brand-text span:last-child {
+      font-size: 0.63rem;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+      padding: 0.48rem 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 9px;
+      background: rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.07);
+      transition: background var(--transition);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav-dropdown {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      padding: 1rem 1.5rem;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .nav-dropdown.open { display: flex; }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 0.72rem 1rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 0.94rem;
+      font-weight: 500;
+      border-radius: var(--radius-sm);
+      transition: background var(--transition);
+    }
+
+    .nav-dropdown a:hover {
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    /* ── LAYOUT ── */
+    main {
+      position: relative;
+      z-index: 1;
+      min-height: calc(100vh - var(--nav-h));
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 4.5rem 0 3.5rem;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      color: var(--blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.38rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-badge .badge-icon {
+      font-size: 0.85rem;
+      line-height: 1;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--text-primary);
+      margin-bottom: 0.85rem;
+      line-height: 1.1;
+    }
+
+    .page-header p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── POEM GRID ── */
+    .poem-section {
+      padding: 0 0 5rem;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* ── POEM CARD ── */
+    .poem-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      cursor: pointer;
+      position: relative;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.55s ease forwards;
+    }
+
+    .poem-card:nth-child(1) { animation-delay: 0.04s; }
+    .poem-card:nth-child(2) { animation-delay: 0.09s; }
+    .poem-card:nth-child(3) { animation-delay: 0.14s; }
+    .poem-card:nth-child(4) { animation-delay: 0.19s; }
+    .poem-card:nth-child(5) { animation-delay: 0.24s; }
+    .poem-card:nth-child(6) { animation-delay: 0.29s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .poem-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.10);
+      border-color: rgba(0, 113, 227, 0.14);
+    }
+
+    .poem-card.expanded {
+      transform: none;
+      cursor: default;
+      border-color: rgba(0, 113, 227, 0.18);
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.09);
+    }
+
+    .poem-card.expanded:hover {
+      transform: none;
+    }
+
+    /* Card header — always visible */
+    .poem-header {
+      padding: 1.85rem 1.85rem 1.5rem;
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .poem-card.expanded .poem-header {
+      padding-bottom: 1.25rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.22rem 0.65rem;
+      border-radius: 100px;
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      background: rgba(0, 0, 0, 0.055);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: var(--text-secondary);
+      margin-bottom: 0.9rem;
+    }
+
+    .poem-title {
+      font-size: 1.28rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 0.3rem;
+      padding-right: 2.4rem;
+    }
+
+    .poem-author {
+      font-size: 0.775rem;
+      color: var(--blue);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.065em;
+    }
+
+    /* Toggle button */
+    .poem-toggle {
+      position: absolute;
+      top: 1.85rem;
+      right: 1.6rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition), transform var(--transition);
+      flex-shrink: 0;
+    }
+
+    .poem-toggle svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--blue);
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .poem-card.expanded .poem-toggle {
+      background: var(--blue);
+    }
+
+    .poem-card.expanded .poem-toggle svg {
+      stroke: #fff;
+      transform: rotate(180deg);
+    }
+
+    /* Read hint */
+    .poem-read-hint {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1.1rem;
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      opacity: 0.85;
+      transition: opacity var(--transition);
+    }
+
+    .poem-card.expanded .poem-read-hint {
+      display: none;
+    }
+
+    .poem-card:hover .poem-read-hint {
+      opacity: 1;
+    }
+
+    .hint-dash {
+      display: inline-block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--blue);
+      border-radius: 2px;
+      flex-shrink: 0;
+      transition: width var(--transition);
+    }
+
+    .poem-card:hover .hint-dash {
+      width: 26px;
+    }
+
+    /* Divider */
+    .poem-divider {
+      height: 1px;
+      margin: 0 1.85rem;
+      background: linear-gradient(90deg, var(--blue-border) 0%, transparent 100%);
+      transform-origin: left;
+      transition: opacity 0.3s ease;
+      opacity: 0;
+    }
+
+    .poem-card.expanded .poem-divider {
+      opacity: 1;
+    }
+
+    /* Collapsible poem body */
+    .poem-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .poem-card.expanded .poem-body {
+      max-height: 2400px;
+    }
+
+    .poem-body-inner {
+      padding: 1.5rem 1.85rem 1.85rem;
+    }
+
+    .poem-text {
+      font-family: var(--font-poem);
+      font-size: 0.985rem;
+      color: var(--text-secondary);
+      line-height: 2.05;
+      font-style: italic;
+      white-space: pre-line;
+      border-left: 2.5px solid rgba(0, 113, 227, 0.2);
+      padding-left: 1.25rem;
+    }
+
+    .poem-stanza {
+      margin-bottom: 1.4em;
+    }
+
+    .poem-stanza:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Close row */
+    .poem-close-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-top: 1.5rem;
+    }
+
+    .btn-close-poem {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.1rem;
+      border-radius: 100px;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0, 0, 0, 0.09);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .btn-close-poem:hover {
+      background: rgba(0, 0, 0, 0.09);
+      color: var(--text-primary);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-top: 1px solid rgba(0, 0, 0, 0.07);
+      padding: 2.75rem 0;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      color: var(--text-primary);
+    }
+
+    .footer-logo {
+      height: 30px;
+      width: auto;
+      border-radius: 7px;
+    }
+
+    footer p {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+
+    footer a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      :root { --nav-h: 64px; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .page-header { padding: 3rem 0 2.5rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1rem; }
+      .poem-header { padding: 1.5rem 1.5rem 1.25rem; }
+      .poem-toggle { top: 1.5rem; right: 1.25rem; }
+      .poem-body-inner { padding: 1.25rem 1.5rem 1.5rem; }
+      .poem-divider { margin: 0 1.5rem; }
+    }
+    @media (min-width: 769px) {
+  .bento-grid {
+    display: block; /* Turn off grid */
+    column-count: 3; /* Or 2, depending on screen width */
+    column-gap: 1.25rem;
+  }
+  
+  .poem-card {
+    display: inline-block; /* Essential for columns */
+    width: 100%;
+    margin-bottom: 1.25rem;
+    break-inside: avoid; /* Prevents the card from splitting between columns */
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo.png" alt="ECH Myanmar Logo" class="nav-logo" />
+        <div class="brand-text">
+          <span>ECH Myanmar</span>
+          <span>ECHMyanmar.com</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="poem.html" active='class'>Poems</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mark.html">Game</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="index.html">Home</a>
+    <a href="poem.html" active="class">Poems</a>
+    <a href="articles.html">Articles</a>
+    <a href="videos.html">Videos</a>
+    <a href="news.html">News</a>
+    <li><a href="mark.html">Game</a></li>
+    <a href="about.html">About</a>
+    <a href="attendance.html">Attendance</a>
+  </div>
+
+
+  <main>
+
+    <section class="page-header">
+      <div class="container">
+        <div class="hero-badge">
+          <span class="badge-icon">✦</span>
+          Creative Expression
+        </div>
+        <h1>Poems</h1>
+        <p>Short English poems to inspire your learning, deepen your vocabulary, and let your words flow freely.</p>
+      </div>
+    </section>
+
+    <section class="poem-section">
+      <div class="container">
+        <div class="bento-grid" id="poemGrid">
+
+          <!-- Poem 1 -->
+          <div class="poem-card" data-poem="0">
+            <div class="poem-header">
+              <div class="tag">Classic</div>
+              <div class="poem-title">I Wandered Lonely as a Cloud</div>
+              <div class="poem-author">By William Wordsworth</div>
+              <div class="poem-read-hint">
+                <span class="hint-dash"></span>
+                Read poem
+              </div>
+              <div class="poem-toggle">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="poem-divider"></div>
+            <div class="poem-body">
+              <div class="poem-body-inner">
+                <div class="poem-text"><div class="poem-stanza">I wandered lonely as a cloud
+That floats on high o'er vales and hills,
+When all at once I saw a crowd,
+A host, of golden daffodils;
+Beside the lake, beneath the trees,
+Fluttering and dancing in the breeze.</div><div class="poem-stanza">Continuous as the stars that shine
+And twinkle on the milky way,
+They stretched in never-ending line
+Along the margin of a bay:
+Ten thousand saw I at a glance,
+Tossing their heads in sprightly dance.</div><div class="poem-stanza">The waves beside them danced; but they
+Out-did the sparkling waves in glee:
+A poet could not but be gay,
+In such a jocund company:
+I gazed—and gazed—but little thought
+What wealth the show to me had brought:</div><div class="poem-stanza">For oft, when on my couch I lie
+In vacant or in pensive mood,
+They flash upon that inward eye
+Which is the bliss of solitude;
+And then my heart with pleasure fills,
+And dances with the daffodils.</div></div>
+                <div class="poem-close-row">
+                  <button class="btn-close-poem">&#x2715;&ensp;Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poem 2 -->
+          <div class="poem-card" data-poem="1">
+            <div class="poem-header">
+              <div class="tag">Classic</div>
+              <div class="poem-title">The Road Not Taken</div>
+              <div class="poem-author">By Robert Frost</div>
+              <div class="poem-read-hint">
+                <span class="hint-dash"></span>
+                Read poem
+              </div>
+              <div class="poem-toggle">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="poem-divider"></div>
+            <div class="poem-body">
+              <div class="poem-body-inner">
+                <div class="poem-text"><div class="poem-stanza">Two roads diverged in a yellow wood,
+And sorry I could not travel both
+And be one traveler, long I stood
+And looked down one as far as I could
+To where it bent in the undergrowth;</div><div class="poem-stanza">Then took the other, as just as fair,
+And having perhaps the better claim,
+Because it was grassy and wanted wear;
+Though as for that the passing there
+Had worn them really about the same,</div><div class="poem-stanza">And both that morning equally lay
+In leaves no step had trodden black.
+Oh, I kept the first for another day!
+Yet knowing how way leads on to way,
+I doubted if I should ever come back.</div><div class="poem-stanza">I shall be telling this with a sigh
+Somewhere ages and ages hence:
+Two roads diverged in a wood, and I—
+I took the one less traveled by,
+And that has made all the difference.</div></div>
+                <div class="poem-close-row">
+                  <button class="btn-close-poem">&#x2715;&ensp;Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poem 3 -->
+          <div class="poem-card" data-poem="2">
+            <div class="poem-header">
+              <div class="tag">Classic</div>
+              <div class="poem-title">Sonnet 18</div>
+              <div class="poem-author">By William Shakespeare</div>
+              <div class="poem-read-hint">
+                <span class="hint-dash"></span>
+                Read poem
+              </div>
+              <div class="poem-toggle">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="poem-divider"></div>
+            <div class="poem-body">
+              <div class="poem-body-inner">
+                <div class="poem-text"><div class="poem-stanza">Shall I compare thee to a summer's day?
+Thou art more lovely and more temperate:
+Rough winds do shake the darling buds of May,
+And summer's lease hath all too short a date:</div><div class="poem-stanza">Sometime too hot the eye of heaven shines,
+And often is his gold complexion dimm'd;
+And every fair from fair sometime declines,
+By chance or nature's changing course untrimm'd;</div><div class="poem-stanza">But thy eternal summer shall not fade,
+Nor lose possession of that fair thou ow'st;
+Nor shall Death brag thou wander'st in his shade,
+When in eternal lines to time thou grow'st:</div><div class="poem-stanza">So long as men can breathe or eyes can see,
+So long lives this, and this gives life to thee.</div></div>
+                <div class="poem-close-row">
+                  <button class="btn-close-poem">&#x2715;&ensp;Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poem 4 -->
+          <div class="poem-card" data-poem="3">
+            <div class="poem-header">
+              <div class="tag">Classic</div>
+              <div class="poem-title">Annabel Lee</div>
+              <div class="poem-author">By Edgar Allan Poe</div>
+              <div class="poem-read-hint">
+                <span class="hint-dash"></span>
+                Read poem
+              </div>
+              <div class="poem-toggle">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="poem-divider"></div>
+            <div class="poem-body">
+              <div class="poem-body-inner">
+                <div class="poem-text"><div class="poem-stanza">It was many and many a year ago,
+In a kingdom by the sea,
+That a maiden there lived whom you may know
+By the name of Annabel Lee;
+And this maiden she lived with no other thought
+Than to love and be loved by me.</div><div class="poem-stanza">I was a child and she was a child,
+In this kingdom by the sea;
+But we loved with a love that was more than love—
+I and my Annabel Lee—
+With a love that the wingèd seraphs of Heaven
+Coveted her and me.</div><div class="poem-stanza">And this was the reason that, long ago,
+In this kingdom by the sea,
+A wind blew out of a cloud, chilling
+My beautiful Annabel Lee;
+So that her highborn kinsmen came
+And bore her away from me,
+To shut her up in a sepulchre
+In this kingdom by the sea.</div><div class="poem-stanza">The angels, not half so happy in Heaven,
+Went envying her and me—
+Yes!—that was the reason (as all men know,
+In this kingdom by the sea)
+That the wind came out of the cloud by night,
+Chilling and killing my Annabel Lee.</div><div class="poem-stanza">But our love it was stronger by far than the love
+Of those who were older than we—
+Of many far wiser than we—
+And neither the angels in Heaven above,
+Nor the demons down under the sea,
+Can ever dissever my soul from the soul
+Of the beautiful Annabel Lee:</div><div class="poem-stanza">For the moon never beams, without bringing me dreams
+Of the beautiful Annabel Lee;
+And the stars never rise, but I feel the bright eyes
+Of the beautiful Annabel Lee;
+And so, all the night-tide, I lie down by the side
+Of my darling—my darling—my life and my bride,
+In her sepulchre there by the sea,
+In her tomb by the sounding sea.</div></div>
+                <div class="poem-close-row">
+                  <button class="btn-close-poem">&#x2715;&ensp;Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poem 5 -->
+          <div class="poem-card" data-poem="4">
+            <div class="poem-header">
+              <div class="tag">Classic</div>
+              <div class="poem-title">If—</div>
+              <div class="poem-author">By Rudyard Kipling</div>
+              <div class="poem-read-hint">
+                <span class="hint-dash"></span>
+                Read poem
+              </div>
+              <div class="poem-toggle">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="poem-divider"></div>
+            <div class="poem-body">
+              <div class="poem-body-inner">
+                <div class="poem-text"><div class="poem-stanza">If you can keep your head when all about you
+Are losing theirs and blaming it on you,
+If you can trust yourself when all men doubt you,
+But make allowance for their doubting too;
+If you can wait and not be tired by waiting,
+Or being lied about, don't deal in lies,
+Or being hated, don't give way to hating,
+And yet don't look too good, nor talk too wise:</div><div class="poem-stanza">If you can dream—and not make dreams your master;
+If you can think—and not make thoughts your aim;
+If you can meet with Triumph and Disaster
+And treat those two impostors just the same;
+If you can bear to hear the truth you've spoken
+Twisted by knaves to make a trap for fools,
+Or watch the things you gave your life to, broken,
+And stoop and build 'em up with worn-out tools:</div><div class="poem-stanza">If you can make one heap of all your winnings
+And risk it on one turn of pitch-and-toss,
+And lose, and start again at your beginnings
+And never breathe a word about your loss;
+If you can force your heart and nerve and sinew
+To serve your turn long after they are gone,
+And so hold on when there is nothing in you
+Except the Will which says to them: 'Hold on!'</div><div class="poem-stanza">If you can talk with crowds and keep your virtue,
+Or walk with Kings—nor lose the common touch,
+If neither foes nor loving friends can hurt you,
+If all men count with you, but none too much;
+If you can fill the unforgiving minute
+With sixty seconds' worth of distance run,
+Yours is the Earth and everything that's in it,
+And—which is more—you'll be a Man, my son!</div></div>
+                <div class="poem-close-row">
+                  <button class="btn-close-poem">&#x2715;&ensp;Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Poem 6 -->
+          <div class="poem-card" data-poem="5">
+            <div class="poem-header">
+              <div class="tag">Classic</div>
+              <div class="poem-title">O Captain! My Captain!</div>
+              <div class="poem-author">By Walt Whitman</div>
+              <div class="poem-read-hint">
+                <span class="hint-dash"></span>
+                Read poem
+              </div>
+              <div class="poem-toggle">
+                <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+              </div>
+            </div>
+            <div class="poem-divider"></div>
+            <div class="poem-body">
+              <div class="poem-body-inner">
+                <div class="poem-text"><div class="poem-stanza">O Captain! my Captain! our fearful trip is done,
+The ship has weather'd every rack, the prize we sought is won,
+The port is near, the bells I hear, the people all exulting,
+While follow eyes the steady keel, the vessel grim and daring;
+But O heart! heart! heart!
+O the bleeding drops of red,
+Where on the deck my Captain lies,
+Fallen cold and dead.</div><div class="poem-stanza">O Captain! my Captain! rise up and hear the bells;
+Rise up—for you the flag is flung—for you the bugle trills,
+For you bouquets and ribbon'd wreaths—for you the shores a-crowding,
+For you they call, the swaying mass, their eager faces turning;
+Here Captain! dear father!
+This arm beneath your head!
+It is some dream that on the deck,
+You've fallen cold and dead.</div><div class="poem-stanza">My Captain does not answer, his lips are pale and still,
+My father does not feel my arm, he has no pulse nor will,
+The ship is anchor'd safe and sound, its voyage closed and done,
+From fearful trip the victor ship comes in with object won;
+Exult O shores, and ring O bells!
+But I with mournful tread,
+Walk the deck my Captain lies,
+Fallen cold and dead.</div></div>
+                <div class="poem-close-row">
+                  <button class="btn-close-poem">&#x2715;&ensp;Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+   <footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="echlogo.png" alt="ECH Myanmar Logo" class="footer-logo" />
+      ECH Myanmar
+    </div>
+    <p>UCSTgi × MAEU Official University Club &nbsp;|&nbsp; © 2026 English Chat Hours Myanmar. <a href="https://echmyanmar.com">ECHMyanmar.com</a></p>
+  </div>
+</footer>
+
+  <script>
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const navDropdown = document.getElementById('navDropdown');
+
+    hamburger.addEventListener('click', () => {
+      const open = hamburger.classList.toggle('open');
+      navDropdown.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !navDropdown.contains(e.target)) {
+        hamburger.classList.remove('open');
+        navDropdown.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Poem expand / collapse
+    document.querySelectorAll('.poem-card').forEach(card => {
+      const header = card.querySelector('.poem-header');
+      const closeBtn = card.querySelector('.btn-close-poem');
+
+      header.addEventListener('click', () => {
+        const isExpanded = card.classList.contains('expanded');
+        if (isExpanded) {
+          collapse(card);
+        } else {
+          expand(card);
+        }
+      });
+
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        collapse(card);
+      });
+    });
+
+    function expand(card) {
+      card.classList.add('expanded');
+      // Smooth scroll so top of card stays visible
+      setTimeout(() => {
+        const rect = card.getBoundingClientRect();
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'));
+        if (rect.top < navH + 16) {
+          window.scrollBy({ top: rect.top - navH - 20, behavior: 'smooth' });
+        }
+      }, 50);
+    }
+
+    function collapse(card) {
+      card.classList.remove('expanded');
+    }
+  </script>
+</body>
+</html>

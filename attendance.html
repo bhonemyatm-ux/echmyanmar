@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Mark your attendance at ECH Myanmar events by scanning your member QR code with your camera." />
+  <title>Attendance — ECH Myanmar</title>
+  <link rel="icon" sizes="48x48" href="echlogo.png">
+  <link rel="stylesheet" href="att.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo.png" alt="ECH Myanmar Logo" class="nav-logo" />
+        <div class="brand-text">
+          <span>ECH Myanmar</span>
+          <span>ECHMyanmar.com</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="poem.html">Poems</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mark.html">Game</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="index.html">Home</a>
+    <a href="poem.html">Poems</a>
+    <a href="articles.html">Articles</a>
+    <a href="videos.html">Videos</a>
+    <a href="news.html">News</a>
+    <a href="mark.html">Game</a>
+    <a href="about.html">About</a>
+    <a href="attendance.html">Attendance</a>
+  </div>
+
+  <!-- Hidden audio elements -->
+  <audio id="scanSound" src="audiosuccess-tone.mp3" preload="auto"></audio>
+  <audio id="failSound" src="failsound.mp3" preload="auto"></audio>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <div class="hero-badge">&#x1F4F8; QR Check-in</div>
+        <h1>Mark Attendance</h1>
+        <p>Scan your ECH Myanmar member QR code to instantly mark your attendance at today's event.</p>
+      </div>
+    </section>
+
+    <section class="att-section">
+      <div class="scanner-container">
+
+        <!-- SCANNER BOX -->
+        <div class="glass scanner-box" id="scannerBox">
+
+          <div class="scanner-header">
+            <div class="scanner-header-icon">&#x1F4F7;</div>
+            <h2>Scan Your QR Code</h2>
+            <p>Allow camera access when prompted. Hold your member QR code steady in front of the camera.</p>
+          </div>
+
+          <!-- QR Reader -->
+          <div id="reader"></div>
+
+          <!-- Camera permission hint -->
+          <div id="cameraHint" class="camera-hint" style="display:none;">
+            <span>&#x26A0;&#xFE0F;</span>
+            <span>Camera blocked — please allow access in your browser settings and refresh.</span>
+          </div>
+
+          <!-- Session & Dashboard controls -->
+          <div class="att-controls">
+            <button id="nextSessionBtn" class="btn att-btn-session">&#x1F5D3; Next Session</button>
+            <button id="dashboardBtn" class="btn att-btn-dashboard">&#x1F4C8; View Report</button>
+          </div>
+
+          <!-- Dashboard -->
+          <div id="dashboard" class="att-dashboard" style="display: none;">
+            <h3 class="dashboard-title">&#x1F4CA; Semester Report — <span id="totalSessions">0</span> sessions</h3>
+            <div id="memberList" class="member-list-wrap"></div>
+            <div class="dashboard-actions">
+              <button id="exportBtn" class="btn att-btn-export">&#x2B07;&#xFE0F; Export CSV</button>
+              <button id="clearSemesterBtn" class="btn att-btn-danger">&#x1F5D1; Clear Semester</button>
+            </div>
+          </div>
+
+          <!-- Result display -->
+          <div id="scanResult" class="scan-result">
+            <div class="scan-result-icon" id="resultIcon">&#x2705;</div>
+            <div class="scan-result-title" id="resultTitle">Attendance Marked!</div>
+            <div class="scan-result-id" id="resultId">ID: —</div>
+          </div>
+
+          <button id="scanAgainBtn" class="btn btn-secondary att-scan-again" style="display: none;">
+            &#x21BA; Scan Another
+          </button>
+
+        </div>
+
+        <!-- HOW TO USE -->
+        <div class="glass att-card">
+          <h3 class="att-card-title">How to Use</h3>
+          <div class="how-list">
+            <div class="how-item">
+              <span class="how-num">1</span>
+              <span class="how-text">Tap <strong>Allow</strong> when your browser asks for camera access.</span>
+            </div>
+            <div class="how-item">
+              <span class="how-num">2</span>
+              <span class="how-text">Hold your ECH member QR code in front of the camera.</span>
+            </div>
+            <div class="how-item">
+              <span class="how-num">3</span>
+              <span class="how-text">Your attendance is marked instantly — you'll see a confirmation message.</span>
+            </div>
+            <div class="how-item">
+              <span class="how-num">4</span>
+              <span class="how-text">Each QR code can only be scanned once per session to prevent duplicates.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ATTENDANCE LOG -->
+        <div class="glass att-card">
+          <div class="att-log-header">
+            <h3 class="scan-log-title">Attendance Log — This Session</h3>
+            <button id="clearLog" class="btn btn-secondary att-clear-btn">Clear</button>
+          </div>
+          <div id="logList">
+            <p class="att-empty-msg">No attendance logged yet.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- No QR code? -->
+    <section class="att-no-qr-section">
+      <div class="container">
+        <div class="glass att-no-qr-card">
+          <div class="att-no-qr-icon">&#x2753;</div>
+          <h3>Don't have a member QR code?</h3>
+          <p>QR codes are issued at registration. If you're a new member or lost yours, speak to an ECH organiser at the event entrance — they'll sort you out!</p>
+          <a href="about.html" class="btn btn-secondary">Contact the Team</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="echlogo.png" alt="ECH Myanmar Logo" class="footer-logo" />
+        ECH Myanmar
+      </div>
+      <p>UCSTgi × MAEU Official University Club &nbsp;|&nbsp; © 2026 English Chat Hours Myanmar. <a href="https://echmyanmar.com">ECHMyanmar.com</a></p>
+    </div>
+  </footer>
+
+  <script src="att.js"></script>
+</body>
+</html>

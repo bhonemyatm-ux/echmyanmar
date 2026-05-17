@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="C1 Word Challenge — a Wordle-style vocabulary game for ECH Myanmar English learners." />
+  <title>C1 Word Challenge — ECH Myanmar</title>
+  <link rel="icon" sizes="48x48" href="echlogo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="game.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+ <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo.png" alt="ECH Myanmar Logo" class="nav-logo" />
+        <div class="brand-text">
+          <span>ECH Myanmar</span>
+          <span>ECHMyanmar.com</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="poem.html">Poems</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mark.html">Game</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="index.html">Home</a>
+    <a href="poem.html">Poems</a>
+    <a href="articles.html">Articles</a>
+    <a href="videos.html">Videos</a>
+    <a href="news.html">News</a>
+    <li><a href="mark.html">Game</a></li>
+    <a href="about.html">About</a>
+    <a href="attendance.html">Attendance</a>
+  </div>
+
+
+  <main class="game-main">
+
+    <!-- ── Hero ── -->
+    <div class="game-hero" aria-hidden="true">
+      <div class="game-hero-bg"></div>
+    </div>
+
+    <!-- ── Game Wrapper ── -->
+    <div class="game-wrapper">
+
+      <!-- GAME SCREEN -->
+      <div class="game-card" id="gameScreen">
+
+        <div class="game-card-header">
+          <div class="game-badge">🎮 C1 Vocabulary</div>
+          <h1 class="game-title">Word Challenge</h1>
+          <p class="game-subtitle">Guess the word from the hint — you have 5 tries per word.</p>
+        </div>
+
+        <div class="game-status-bar">
+          <div class="status-item">
+            <span class="status-label">Question</span>
+            <span class="status-value" id="questionInfo">1 / 10</span>
+          </div>
+          <div class="status-divider"></div>
+          <div class="status-item">
+            <span class="status-label">Score</span>
+            <span class="status-value status-value--blue" id="scoreDisplay">0 / 30</span>
+          </div>
+          <div class="status-divider"></div>
+          <div class="status-item">
+            <span class="status-label">Points per guess</span>
+            <span class="status-value">3 · 2 · 1 · 0</span>
+          </div>
+        </div>
+
+        <div class="hint-box" id="hintBox" aria-live="polite">
+          Hint appears here…
+        </div>
+
+        <div class="grid" id="grid" aria-label="Guess grid"></div>
+
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-dot legend-dot--correct"></div>
+            <span>Correct position</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot legend-dot--present"></div>
+            <span>Wrong position</span>
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot legend-dot--wrong"></div>
+            <span>Not in word</span>
+          </div>
+        </div>
+
+        <div class="controls">
+          <input
+            type="text"
+            id="guessInput"
+            placeholder="Type your guess…"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="none"
+            spellcheck="false"
+            aria-label="Your guess"
+            maxlength="20"
+          />
+          <button id="guessBtn" class="btn-guess">Guess</button>
+        </div>
+
+        <div class="message" id="message" aria-live="polite"></div>
+
+      </div>
+
+      <!-- RESULT SCREEN -->
+      <div class="game-card result-screen" id="resultScreen">
+
+        <div class="result-logo">
+          <img src="echlogo.png" alt="ECH Myanmar Logo" />
+        </div>
+
+        <h2 class="result-heading">Round Complete!</h2>
+
+        <div class="result-score-ring" id="resultRing">
+          <span class="result-score-number" id="finalScore">0</span>
+          <span class="result-score-denom">/ 30</span>
+        </div>
+
+        <div class="result-message" id="finalMessage">Excellent</div>
+
+        <div class="result-breakdown" id="resultBreakdown"></div>
+
+        <button class="btn-restart" onclick="startNewRound()">
+          🔄 Play Again
+        </button>
+
+        <a href="articles.html" class="btn-articles">📖 Read Articles</a>
+
+        <button class="btn-screenshot" id="screenshotBtn">🖼️ Save Result as Image</button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="echlogo.png" alt="ECH Myanmar Logo" class="footer-logo" />
+      ECH Myanmar
+    </div>
+    <p>UCSTgi × MAEU Official University Club &nbsp;|&nbsp; © 2026 English Chat Hours Myanmar. <a href="https://echmyanmar.com">ECHMyanmar.com</a></p>
+  </div>
+</footer>
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+  <script>
+
+    /* =========================================
+       WORD LIST
+    ========================================= */
+    const wordData = [
+      { word: "innate",   hint: "Natural from birth rather than learned." },
+      { word: "biased",   hint: "Not neutral or objective." },
+      { word: "precise",  hint: "Very accurate and exact." },
+      { word: "rigid",    hint: "Difficult to bend or unwilling to change." },
+      { word: "deter",    hint: "To discourage someone from doing something." },
+      { word: "bribe",    hint: "Illegal payment for influence." },
+      { word: "sustain",  hint: "To continue or maintain over time." },
+      { word: "faculty",  hint: "Teaching staff in a university." },
+      { word: "coherent", hint: "Logical and well organized." },
+      { word: "mitigate", hint: "To reduce the seriousness of something." },
+      { word: "clarify",  hint: "To make something easier to understand." },
+      { word: "notion",   hint: "An idea or belief about something." },
+      { word: "compile",  hint: "To collect information into one work." },
+      { word: "complex",  hint: "Not simple; difficult to understand." },
+      { word: "enhance",  hint: "To improve quality or value." },
+      { word: "resolve",  hint: "To solve a problem or conflict." },
+      { word: "valid",    hint: "Logically or legally acceptable." },
+      { word: "deduce",   hint: "To reach a conclusion using reasoning." },
+      { word: "justify",  hint: "To provide a good reason for something." },
+      { word: "convert",  hint: "To change from one form into another." }
+    ];
+
+    /* =========================================
+       SETTINGS
+    ========================================= */
+    const TOTAL_QUESTIONS = 10;
+    const MAX_ATTEMPTS    = 5;
+
+    /* =========================================
+       STATE
+    ========================================= */
+    let selectedWords   = [];
+    let currentQuestion = 0;
+    let attempts        = 0;
+    let totalScore      = 0;
+    let currentWord     = "";
+    let currentHint     = "";
+    let roundResults    = [];
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+    const grid         = document.getElementById("grid");
+    const guessInput   = document.getElementById("guessInput");
+    const guessBtn     = document.getElementById("guessBtn");
+    const message      = document.getElementById("message");
+    const hintBox      = document.getElementById("hintBox");
+    const questionInfo = document.getElementById("questionInfo");
+    const scoreDisplay = document.getElementById("scoreDisplay");
+    const gameScreen   = document.getElementById("gameScreen");
+    const resultScreen = document.getElementById("resultScreen");
+    const finalScore   = document.getElementById("finalScore");
+    const finalMessage = document.getElementById("finalMessage");
+
+    /* =========================================
+       HELPERS
+    ========================================= */
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function calculatePoints(attempt) {
+      if (attempt === 1) return 3;
+      if (attempt === 2) return 2;
+      if (attempt === 3) return 1;
+      return 0;
+    }
+
+    /* =========================================
+       GRID
+    ========================================= */
+    function createGrid(wordLength) {
+      grid.innerHTML = "";
+      for (let r = 0; r < MAX_ATTEMPTS; r++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+        row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
+        for (let c = 0; c < wordLength; c++) {
+          const cell = document.createElement("div");
+          cell.classList.add("cell");
+          cell.id = `cell-${r}-${c}`;
+          row.appendChild(cell);
+        }
+        grid.appendChild(row);
+      }
+    }
+
+    /* =========================================
+       LOAD QUESTION
+    ========================================= */
+    function loadQuestion() {
+      const data    = selectedWords[currentQuestion];
+      currentWord   = data.word.toLowerCase();
+      currentHint   = data.hint;
+      attempts      = 0;
+
+      questionInfo.textContent = `${currentQuestion + 1} / ${TOTAL_QUESTIONS}`;
+      scoreDisplay.textContent = `${totalScore} / 30`;
+      hintBox.textContent      = `💡 ${currentHint}`;
+      message.textContent      = "";
+      message.className        = "message";
+      guessInput.value         = "";
+      guessInput.disabled      = false;
+      guessBtn.disabled        = false;
+      guessInput.focus();
+
+      createGrid(currentWord.length);
+    }
+
+    /* =========================================
+       SUBMIT GUESS
+    ========================================= */
+    function submitGuess() {
+      const guess = guessInput.value.toLowerCase().trim();
+
+      if (guess.length !== currentWord.length) {
+        showMessage(`Word must be ${currentWord.length} letters.`, "error");
+        return;
+      }
+
+      for (let i = 0; i < currentWord.length; i++) {
+        const cell   = document.getElementById(`cell-${attempts}-${i}`);
+        const letter = guess[i];
+        cell.textContent = letter;
+
+        if (letter === currentWord[i]) {
+          cell.classList.add("correct");
+        } else if (currentWord.includes(letter)) {
+          cell.classList.add("present");
+        } else {
+          cell.classList.add("wrong");
+        }
+
+        /* stagger animation */
+        cell.style.animationDelay = `${i * 60}ms`;
+        cell.classList.add("cell--flip");
+      }
+
+      attempts++;
+
+      if (guess === currentWord) {
+        const pts = calculatePoints(attempts);
+        totalScore += pts;
+        roundResults.push({ word: currentWord, solved: true, points: pts });
+        showMessage(`✓ Correct! +${pts} point${pts !== 1 ? "s" : ""}`, "success");
+        guessInput.disabled = guessBtn.disabled = true;
+        setTimeout(nextQuestion, 1400);
+        return;
+      }
+
+      if (attempts >= MAX_ATTEMPTS) {
+        roundResults.push({ word: currentWord, solved: false, points: 0 });
+        showMessage(`The word was: ${currentWord.toUpperCase()}`, "reveal");
+        guessInput.disabled = guessBtn.disabled = true;
+        setTimeout(nextQuestion, 1800);
+      }
+
+      guessInput.value = "";
+    }
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className   = `message message--${type}`;
+    }
+
+    /* =========================================
+       NEXT QUESTION
+    ========================================= */
+    function nextQuestion() {
+      currentQuestion++;
+      if (currentQuestion >= TOTAL_QUESTIONS) {
+        showResults();
+        return;
+      }
+      loadQuestion();
+    }
+
+    /* =========================================
+       RESULTS
+    ========================================= */
+    function showResults() {
+      gameScreen.style.display   = "none";
+      resultScreen.style.display = "flex";
+
+      finalScore.textContent = totalScore;
+
+      const ring = document.getElementById("resultRing");
+      const pct  = totalScore / 30;
+      if (pct >= 0.8)      { ring.classList.add("ring--gold");   finalMessage.textContent = "🏆 Excellent!"; }
+      else if (pct >= 0.5) { ring.classList.add("ring--blue");   finalMessage.textContent = "👍 Good Work!"; }
+      else                 { ring.classList.add("ring--grey");   finalMessage.textContent = "📚 Keep Practising!"; }
+
+      const breakdown = document.getElementById("resultBreakdown");
+      breakdown.innerHTML = roundResults.map(r =>
+        `<div class="breakdown-row">
+          <span class="breakdown-word ${r.solved ? 'breakdown-word--solved' : 'breakdown-word--missed'}">${r.word.toUpperCase()}</span>
+          <span class="breakdown-pts">${r.solved ? '+' + r.points : '0'} pts</span>
+         </div>`
+      ).join('');
+    }
+
+    /* =========================================
+       NEW ROUND
+    ========================================= */
+    function startNewRound() {
+      selectedWords   = shuffle([...wordData]).slice(0, TOTAL_QUESTIONS);
+      currentQuestion = 0;
+      totalScore      = 0;
+      roundResults    = [];
+
+      resultScreen.style.display = "none";
+      gameScreen.style.display   = "block";
+
+      loadQuestion();
+    }
+
+    /* =========================================
+       SCREENSHOT
+    ========================================= */
+    function captureResultScreenshot() {
+      const target = document.getElementById("resultScreen");
+      html2canvas(target).then(canvas => {
+        const link = document.createElement("a");
+        link.download = "C1-Word-Challenge-Result.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+      }).catch(err => {
+        console.error("Screenshot failed:", err);
+        alert("Could not capture image. Try again.");
+      });
+    }
+
+    /* =========================================
+       EVENTS
+    ========================================= */
+    guessBtn.addEventListener("click", submitGuess);
+    guessInput.addEventListener("keydown", e => {
+      if (e.key === "Enter") submitGuess();
+    });
+
+    document.getElementById("screenshotBtn").addEventListener("click", captureResultScreenshot);
+
+    /* =========================================
+       INIT
+    ========================================= */
+    startNewRound();
+
+  </script>
+</body>
+</html>

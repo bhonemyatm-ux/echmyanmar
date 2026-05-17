@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About English Chat Hours Myanmar — official university club collaboration between UCSTgi and MAEU, founded by Bhone Myat Min to bridge Aerospace and Computer Science through English skills and innovative projects." />
+  <title>About — ECH Myanmar</title>
+  <link rel="icon" sizes="48x48" href="echlogo.png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+
+    /* ══ UNIVERSITY PARTNERSHIP BANNER ══ */
+    .partner-banner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1.25rem;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .partner-card {
+      padding: 2rem 1.75rem;
+      text-align: center;
+      border-radius: var(--radius);
+    }
+    .partner-card.ucstgi {
+      background: linear-gradient(135deg, rgba(0,113,227,0.07), rgba(0,113,227,0.03));
+      border: 1px solid rgba(0,113,227,0.18);
+    }
+    .partner-card.maeu {
+      background: linear-gradient(135deg, rgba(52,170,220,0.07), rgba(52,170,220,0.03));
+      border: 1px solid rgba(52,170,220,0.20);
+    }
+    .partner-icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .partner-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.3rem;
+    }
+    .partner-uni {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+    .partner-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .partner-divider {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .partner-x {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0071e3, #34aadc);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: white;
+      box-shadow: 0 4px 16px rgba(0,113,227,0.3);
+    }
+
+    /* ══ MISSION ══ */
+    .mission-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem;
+      text-align: center;
+    }
+    .mission-icon { font-size: 3.5rem; margin-bottom: 1.25rem; }
+    .mission-wrap h2 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1.1rem;
+    }
+    .mission-wrap p {
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--text-muted);
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    /* ══ TIMELINE ══ */
+    .timeline {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(0,113,227,0.3), rgba(52,170,220,0.1));
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr 48px 1fr;
+      gap: 0;
+      align-items: start;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-content {
+      padding: 1.5rem 1.75rem;
+      border-radius: var(--radius);
+    }
+    .timeline-content.left { text-align: right; margin-right: 1.25rem; }
+    .timeline-content.right { text-align: left; margin-left: 1.25rem; }
+    .timeline-content.empty { background: none; border: none; box-shadow: none; }
+    .timeline-dot {
+      width: 48px;
+      display: flex;
+      justify-content: center;
+      padding-top: 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-dot-inner {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+    .timeline-year {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+      letter-spacing: -0.01em;
+    }
+    .timeline-body {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    /* Mirror cards are hidden on desktop — only shown on mobile as substitute for .left */
+    .timeline-content.mirror { display: none; }
+
+    /* ══ VALUES ══ */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    .value-card {
+      padding: 2rem 1.75rem;
+    }
+    .value-icon-wrap {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .value-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.45rem;
+      letter-spacing: -0.01em;
+    }
+    .value-card p {
+      font-size: 0.855rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ══ LEADERSHIP ══ */
+    .leadership-featured {
+      padding: 2.25rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.75rem;
+      background: linear-gradient(135deg, rgba(0,113,227,0.06), rgba(52,170,220,0.06));
+      border-color: rgba(0,113,227,0.18);
+      margin-bottom: 1.25rem;
+    }
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .leadership-card {
+      padding: 1.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+    }
+    .avatar {
+      border-radius: 50%;
+      background: rgba(0,113,227,0.08);
+      border: 2px solid rgba(0,113,227,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .avatar-lg { width: 88px; height: 88px; font-size: 2.4rem; }
+    .avatar-md { width: 66px; height: 66px; font-size: 1.8rem; }
+    .leader-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.2rem;
+    }
+    .leader-role {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      margin-bottom: 0.2rem;
+    }
+    .leader-uni {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .leader-bio {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .leader-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.85rem;
+    }
+    .leader-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      color: var(--blue);
+    }
+
+    /* ══ STATS ══ */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .stat-item {
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: var(--radius);
+      box-shadow: var(--glass-shadow);
+      padding: 2rem 1.25rem;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      background: linear-gradient(135deg, #0071e3, #34aadc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.45rem;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* ══ ACTIVITIES ══ */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+    .activity-card {
+      padding: 1.75rem;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .activity-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .activity-card h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.35rem;
+      letter-spacing: -0.01em;
+    }
+    .activity-card p {
+      font-size: 0.845rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ══ CTA ══ */
+    .cta-card {
+      padding: 3.5rem 3rem;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(0,113,227,0.07), rgba(52,170,220,0.05));
+      border-color: rgba(0,113,227,0.18);
+    }
+    .cta-card h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .cta-card p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+    .cta-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .cta-contacts {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-chip {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .contact-chip a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .contact-chip a:hover { text-decoration: underline; }
+
+    /* ══ RESPONSIVE ══ */
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .values-grid       { grid-template-columns: repeat(2, 1fr); }
+      .leadership-grid   { grid-template-columns: 1fr; }
+      .stats-grid        { grid-template-columns: repeat(2, 1fr); }
+      .activities-grid   { grid-template-columns: 1fr; }
+
+      /* Partner banner — stack vertically, divider becomes a horizontal row */
+      .partner-banner    { grid-template-columns: 1fr; max-width: 480px; }
+      .partner-divider   { flex-direction: row; justify-content: center; padding: 0.25rem 0; }
+      .partner-x         { width: 36px; height: 36px; font-size: 0.9rem; }
+
+      /* Timeline — collapse to single left-aligned column */
+      .timeline                   { padding: 0 0 0 1rem; }
+      .timeline::before           { left: 20px; top: 0; bottom: 0; }
+      .timeline-item              { grid-template-columns: 40px 1fr; gap: 0; }
+      .timeline-content.left      { display: none; }
+      .timeline-content.empty     { display: none; }
+      .timeline-content.mirror    { display: block; margin-left: 0.75rem; text-align: left; }
+      .timeline-content.right:not(.mirror) { margin-left: 0.75rem; text-align: left; }
+      .timeline-dot               { width: 40px; padding-top: 1.35rem; }
+    }
+
+    /* Large phone */
+    @media (max-width: 600px) {
+      section { padding: 2.5rem 0; }
+
+      .values-grid { grid-template-columns: 1fr; }
+      .stats-grid  { grid-template-columns: repeat(2, 1fr); }
+      .stat-item   { padding: 1.5rem 1rem; }
+      .stat-number { font-size: 2.2rem; }
+
+      .mission-wrap { padding: 2rem 1.25rem; }
+      .mission-wrap p { font-size: 1rem; }
+
+      .partner-card { padding: 1.5rem 1.25rem; }
+
+      .leadership-featured {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.75rem 1.25rem;
+      }
+      .leadership-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 1.5rem 1.25rem;
+      }
+      .leader-tags { justify-content: center; }
+
+      .activity-card { padding: 1.25rem; gap: 1rem; }
+      .activity-icon { width: 42px; height: 42px; font-size: 1.2rem; flex-shrink: 0; }
+
+      .value-card { padding: 1.5rem 1.25rem; }
+
+      .timeline-content.right { padding: 1.25rem; margin-left: 0.5rem; }
+
+      .cta-card { padding: 2rem 1.25rem; }
+      .cta-actions { flex-direction: column; align-items: center; }
+      .cta-actions .btn { width: 100%; justify-content: center; }
+    }
+
+    /* Small phone */
+    @media (max-width: 400px) {
+      .stats-grid  { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .stat-number { font-size: 1.9rem; }
+      .partner-banner { max-width: 100%; }
+      .section-header h2 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV — untouched -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo.png" alt="ECH Myanmar Logo" class="nav-logo" />
+        <div class="brand-text">
+          <span>ECH Myanmar</span>
+          <span>ECHMyanmar.com</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="poem.html">Poems</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mark.html">Game</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="index.html">Home</a>
+    <a href="poem.html">Poems</a>
+    <a href="articles.html">Articles</a>
+    <a href="videos.html">Videos</a>
+    <a href="news.html">News</a>
+    <li><a href="mark.html">Game</a></li>
+    <a href="about.html">About</a>
+    <a href="attendance.html">Attendance</a>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="page-header">
+      <div class="container">
+        <div class="hero-badge">🤝 Official University Collaboration</div>
+        <h1>About ECH Myanmar</h1>
+        <p>Founded in 2025 as an official partnership between UCSTgi Computer Science and MAEU Aerospace Engineering — building cross-disciplinary excellence through English proficiency and innovative STEM projects.</p>
+      </div>
+    </section>
+
+    <!-- ── University Partnership ── -->
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="partner-banner">
+          <div class="partner-card ucstgi glass">
+            <div class="partner-icon">💻</div>
+            <div class="partner-name">UCSTgi</div>
+            <div class="partner-uni">Computer Science · Taunggyi</div>
+            <div class="partner-desc">University of Computer Studies, Taunggyi — driving software innovation and algorithmic thinking in Myanmar's tech landscape.</div>
+          </div>
+
+          <div class="partner-divider">
+            <div class="partner-x">×</div>
+            <span>Partners</span>
+          </div>
+
+          <div class="partner-card maeu glass">
+            <div class="partner-icon">✈️</div>
+            <div class="partner-name">MAEU</div>
+            <div class="partner-uni">Aerospace Engineering · Meiktila</div>
+            <div class="partner-desc">Myanmar Aerospace Engineering University — pioneering aviation science, propulsion systems, and flight vehicle design.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Mission ── -->
+    <section>
+      <div class="container">
+        <div class="glass mission-wrap">
+          <div class="mission-icon"></div>
+          <h2>Our Mission</h2>
+          <p>Empowering Myanmar's next generation of Computer Science and Aerospace Engineering students through English communication mastery, interdisciplinary collaboration, and hands-on innovation in AI-aerospace projects, drone technology, and STEM research.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Stats ── -->
+    <section style="padding-top: 0;">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Partner Universities</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">40+</div>
+            <div class="stat-label">Active Members</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1</div>
+            <div class="stat-label">Events Hosted</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Joint Projects</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Story Timeline ── -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Our Journey</span>
+          <h2>From Chat Sessions to Innovation Hub</h2>
+          <p>A movement that started with weekly conversations and grew into a cross-university STEM platform.</p>
+        </div>
+        <div class="timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-content empty left"></div>
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="glass timeline-content right">
+              <div class="timeline-year">Early 2025</div>
+              <div class="timeline-title">The Spark</div>
+              <div class="timeline-body">Bhone Myat Min identifies a gap — CS and Aerospace students sharing a common barrier: technical English. The idea for ECH Myanmar is born.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="glass timeline-content left">
+              <div class="timeline-year">Mid 2025</div>
+              <div class="timeline-title">Official Launch</div>
+              <div class="timeline-body">ECH Myanmar formally established as an official inter-university club, with weekly English Chat Hours running between UCSTgi Taunggyi and MAEU Meiktila.</div>
+            </div>
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="glass timeline-content right mirror">
+              <div class="timeline-year">Mid 2025</div>
+              <div class="timeline-title">Official Launch</div>
+              <div class="timeline-body">ECH Myanmar formally established as an official inter-university club, with weekly English Chat Hours running between UCSTgi Taunggyi and MAEU Meiktila.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content empty left"></div>
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="glass timeline-content right">
+              <div class="timeline-year">Late 2025</div>
+              <div class="timeline-title">Penpal Exchange Program</div>
+              <div class="timeline-body">ECH Myanmar launches a cross-university penpal exchange, pairing CS and Aerospace students to practice written English, share academic experiences, and build lasting cross-disciplinary friendships.</div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="glass timeline-content left">
+              <div class="timeline-year">2026</div>
+              <div class="timeline-title">Digital Platform &amp; QR System</div>
+              <div class="timeline-body">ECH Myanmar launches its website and QR-based attendance tracking system, enabling semester-wide data collection and measurable member engagement across both universities.</div>
+            </div>
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="glass timeline-content right mirror">
+              <div class="timeline-year">2026</div>
+              <div class="timeline-title">Digital Platform &amp; QR System</div>
+              <div class="timeline-body">ECH Myanmar launches its website and QR-based attendance tracking system, enabling semester-wide data collection and measurable member engagement across both universities.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── What We Do ── -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Activities</span>
+          <h2>What We Do</h2>
+          <p>A range of activities that develop both technical English skills and real-world STEM competencies.</p>
+        </div>
+        <div class="activities-grid">
+          <div class="glass activity-card">
+            <div class="activity-icon">🗣️</div>
+            <div>
+              <h3>Weekly English Chat Hours</h3>
+              <p>Structured conversation sessions focused on technical vocabulary, presentation skills, and professional English for STEM careers.</p>
+            </div>
+          </div>
+          <div class="glass activity-card">
+            <div class="activity-icon">🚁</div>
+            <div>
+              <h3>Drone & AI Projects</h3>
+              <p>Collaborative builds including drone navigation algorithms, autonomous flight simulations, and AI-powered aerospace data analysis.</p>
+            </div>
+          </div>
+          <div class="glass activity-card">
+            <div class="activity-icon">⚡</div>
+            <div>
+              <h3>Interdisciplinary Hackathons</h3>
+              <p>Timed innovation challenges pairing CS and Aerospace students to solve real engineering problems together.</p>
+            </div>
+          </div>
+          <div class="glass activity-card">
+            <div class="activity-icon">📊</div>
+            <div>
+              <h3>Research & Presentations</h3>
+              <p>Members present research papers, technical demos, and project portfolios in English — building skills for global conferences and industry roles.</p>
+            </div>
+          </div>
+          <div class="glass activity-card">
+            <div class="activity-icon">📷</div>
+            <div>
+              <h3>QR Attendance Tracking</h3>
+              <p>Smart attendance system with QR member cards, session tracking, and semester-wide engagement reports for both university cohorts.</p>
+            </div>
+          </div>
+          <div class="glass activity-card">
+            <div class="activity-icon">🌐</div>
+            <div>
+              <h3>Career Development</h3>
+              <p>Resume workshops, mock interviews in English, and networking with industry professionals — preparing members for global STEM careers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Core Values ── -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Guiding Principles</span>
+          <h2>Our Core Values</h2>
+        </div>
+        <div class="values-grid">
+          <div class="glass value-card">
+            <div class="value-icon-wrap">💻</div>
+            <h3>Interdisciplinary Excellence</h3>
+            <p>CS + Aerospace: Real joint projects in drones, simulations, and AI applications that neither discipline could build alone.</p>
+          </div>
+          <div class="glass value-card">
+            <div class="value-icon-wrap">🗣️</div>
+            <h3>Technical English Mastery</h3>
+            <p>Professional communication skills for global research, industry presentations, and international collaboration.</p>
+          </div>
+          <div class="glass value-card">
+            <div class="value-icon-wrap">🤝</div>
+            <h3>University Partnership</h3>
+            <p>UCSTgi ↔ MAEU: An official inter-university collaboration spanning Taunggyi to Meiktila.</p>
+          </div>
+          <div class="glass value-card">
+            <div class="value-icon-wrap">🚀</div>
+            <h3>Practical Innovation</h3>
+            <p>From prototypes to portfolios — career-ready STEM skills built through hands-on project experience.</p>
+          </div>
+          <div class="glass value-card">
+            <div class="value-icon-wrap">🇲🇲</div>
+            <h3>Myanmar STEM Leadership</h3>
+            <p>Global standards, local impact — developing the engineers and technologists who will shape Myanmar's future.</p>
+          </div>
+          <div class="glass value-card">
+            <div class="value-icon-wrap">📈</div>
+            <h3>Measurable Progress</h3>
+            <p>QR attendance tracking, skill milestones, and data-driven reporting so every member's growth is visible.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Leadership ── -->
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <span class="section-eyebrow">Student Leadership</span>
+          <h2>Founders &amp; Leadership</h2>
+          <p>Driven by passionate students from both partner universities.</p>
+        </div>
+
+        <!-- Featured founder -->
+        <div class="glass leadership-featured" style="border-radius: var(--radius); margin-bottom: 1.25rem;">
+          <div class="avatar avatar-lg">👨‍💻</div>
+          <div>
+            <div class="leader-name">Bhone Myat Min</div>
+            <div class="leader-role">Founder &amp; President</div>
+            <div class="leader-uni">UCSTgi — Computer Science, Taunggyi</div>
+            <div class="leader-bio">Visionary architect of ECH Myanmar. Bhone identified the need to bridge Aerospace and CS students through English and built the entire ECH platform — from weekly sessions to the QR attendance system — from the ground up. He leads strategy, cross-university initiatives, and the club's digital infrastructure.</div>
+            <div class="leader-tags">
+              <span class="leader-tag">Founder</span>
+              <span class="leader-tag">QR System</span>
+              <span class="leader-tag">Strategy</span>
+              <span class="leader-tag">CS × Aerospace</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="leadership-grid">
+          <div class="glass leadership-card">
+            <div class="avatar avatar-md">💻</div>
+            <div>
+              <div class="leader-name">Win Hnin Hlaing</div>
+              <div class="leader-role">ECH UCSTgi Co-Founder</div>
+              <div class="leader-uni">Computer Science, Taunggyi</div>
+              <div class="leader-bio">Drives ECH activities at UCSTgi, championing English communication and technical collaboration among Computer Science students.</div>
+              <div class="leader-tags">
+                <span class="leader-tag">UCSTgi</span>
+                <span class="leader-tag">CS</span>
+              </div>
+            </div>
+          </div>
+          <div class="glass leadership-card">
+            <div class="avatar avatar-md">✈️</div>
+            <div>
+              <div class="leader-name">Khin Nyein Chan Hnin</div>
+              <div class="leader-role">ECH MAEU Co-Founder</div>
+              <div class="leader-uni">Propulsion &amp; Flight Vehicle, MAEU</div>
+              <div class="leader-bio">MAEU representative fostering Aerospace student participation in English practice and interdisciplinary STEM innovation projects.</div>
+              <div class="leader-tags">
+                <span class="leader-tag">MAEU</span>
+                <span class="leader-tag">Aerospace</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section>
+      <div class="container" style="max-width: 820px;">
+        <div class="glass cta-card">
+          <div style="font-size:2.5rem; margin-bottom:1rem;">🚀</div>
+          <h2>Ready to Join the Movement?</h2>
+          <p>UCSTgi and MAEU students: join English Chat Hours, collaborate on real projects, and build the skills for a global STEM career. Mark your attendance below to get started.</p>
+          <div class="cta-actions">
+            <a href="attendance.html" class="btn btn-primary" style="padding:0.9rem 2rem; font-size:1rem;">📷 Mark Attendance</a>
+            <a href="index.html" class="btn btn-secondary" style="padding:0.9rem 2rem; font-size:1rem;">Explore ECH Myanmar</a>
+          </div>
+          <div class="cta-contacts">
+            <div class="contact-chip">📧 <a href="mailto:hello@echmyanmar.com">hello@echmyanmar.com</a></div>
+            <div class="contact-chip">🌐 <a href="https://echmyanmar.com">echmyanmar.com</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+ <footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="echlogo.png" alt="ECH Myanmar Logo" class="footer-logo" />
+      ECH Myanmar
+    </div>
+    <p>UCSTgi × MAEU Official University Club &nbsp;|&nbsp; © 2026 English Chat Hours Myanmar. <a href="https://echmyanmar.com">ECHMyanmar.com</a></p>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

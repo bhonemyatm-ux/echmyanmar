@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Watch English learning videos — ECH Myanmar. Improve listening and speaking skills." />
+  <title>Videos — ECH Myanmar</title>
+  <link rel="icon" sizes="48x48" href="echlogo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="videos.css" />
+</head>
+<body>
+
+  <!-- ══ NAV — original design ══ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img
+          src="echlogo.png"
+          alt="ECH Myanmar Logo"
+          class="nav-logo"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        />
+        <div class="nav-logo-fallback">E</div>
+        <div class="brand-text">
+          <span>ECH Myanmar</span>
+          <span>ECHMyanmar.com</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="poem.html">Poems</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="videos.html" class="active">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mark.html">Game</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile dropdown -->
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="index.html">Home</a>
+    <a href="poem.html">Poems</a>
+    <a href="articles.html">Articles</a>
+    <a href="videos.html" class="active">Videos</a>
+    <a href="news.html">News</a>
+    <a href="mark.html">Game</a>
+    <a href="about.html">About</a>
+    <a href="attendance.html">Attendance</a>
+  </div>
+
+  <!-- ══ PAGE ══ -->
+  <div class="page-wrap">
+
+    <!-- Search + Filters -->
+    <div class="top-bar">
+      <div class="search-wrap">
+        <div class="search-box">
+          <span class="search-icon-left" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="11" cy="11" r="6"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+            </svg>
+          </span>
+          <input
+            type="search"
+            id="searchInput"
+            class="search-input"
+            placeholder="Search videos…"
+            autocomplete="off"
+            autocorrect="off"
+            spellcheck="false"
+            aria-label="Search videos"
+          />
+          <button class="search-clear" id="searchClear" aria-label="Clear search">✕</button>
+        </div>
+      </div>
+
+      <div class="filter-row" role="group" aria-label="Filter by category">
+        <button class="fpill active" data-filter="all">All</button>
+        <button class="fpill" data-filter="sdg">🌍 SDG</button>
+        <button class="fpill" data-filter="fluency">💬 Fluency</button>
+        <button class="fpill" data-filter="listening">👂 Listening</button>
+        <button class="fpill" data-filter="grammar">📝 Grammar</button>
+        <button class="fpill" data-filter="pronunciation">🗣️ Pronunciation</button>
+      </div>
+    </div>
+
+    <!-- Featured video -->
+    <div class="featured-section">
+      <div class="featured-wrap fade-in">
+        <div class="featured-embed">
+          <iframe
+            src="https://www.youtube.com/embed/nGKLLDA4OmI?rel=0&modestbranding=1"
+            title="UN Sustainable Development Goals"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+        <div class="featured-body">
+          <div class="featured-left">
+            <div class="featured-badge">⭐ Staff Pick</div>
+            <div class="featured-title">UN Sustainable Development Goals (SDGs)</div>
+            <div class="featured-meta">United Nations &nbsp;·&nbsp; All Levels &nbsp;·&nbsp; 46 sec</div>
+          </div>
+          <div class="featured-actions">
+            <button class="icon-action-btn like-fav-btn" id="featuredLike" data-id="nGKLLDA4OmI" aria-label="Like">
+              <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              Like
+            </button>
+            <button class="icon-action-btn save-fav-btn" id="featuredSave" data-id="nGKLLDA4OmI" aria-label="Watch Later">
+              <svg viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v16l7-3 7 3V5a2 2 0 0 0-2-2z"/></svg>
+              Watch Later
+            </button>
+            <a
+              class="icon-action-btn yt-action-btn"
+              href="https://www.youtube.com/watch?v=nGKLLDA4OmI"
+              target="_blank"
+              rel="noopener"
+              aria-label="Watch on YouTube"
+            >
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+              YouTube
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Video grid -->
+    <div class="section-header">
+      <h2 class="section-title">Video Library</h2>
+      <span class="section-count" id="resultCount" aria-live="polite"></span>
+    </div>
+
+    <div class="video-grid" id="videoGrid">
+      <!-- Cards injected by JS -->
+
+      <!-- No results -->
+      <div class="no-results" id="noResults" aria-live="polite">
+        <div class="no-results-icon">🔍</div>
+        <h3>No videos found</h3>
+        <p>Try a different search term or category.</p>
+        <button class="no-results-btn" id="noResultsBtn">Clear filters</button>
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+  <!-- ══ VIDEO MODAL ══ -->
+  <div class="modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose" aria-label="Close video">✕</button>
+
+      <div class="modal-video-wrap">
+        <div class="modal-loader" id="modalLoader">
+          <div class="spinner"></div>
+          <div class="spinner-text">Loading video…</div>
+        </div>
+        <iframe
+          id="modalIframe"
+          src=""
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          title="Video player">
+        </iframe>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta"  id="modalMeta"></div>
+        <div class="modal-divider"></div>
+        <div class="modal-actions-row">
+          <button class="icon-action-btn like-fav-btn" id="modalLike" aria-label="Like">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Like
+          </button>
+          <button class="icon-action-btn save-fav-btn" id="modalSave" aria-label="Watch Later">
+            <svg viewBox="0 0 24 24"><path d="M17 3H7a2 2 0 0 0-2 2v16l7-3 7 3V5a2 2 0 0 0-2-2z"/></svg>
+            Watch Later
+          </button>
+          <a class="icon-action-btn yt-action-btn" id="modalYtLink" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1C4.5 20.4 12 20.4 12 20.4s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+            Watch on YouTube
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Toast -->
+  <div id="toast" aria-live="polite"></div>
+
+  <script src="videos.js"></script>
+</body>
+</html>

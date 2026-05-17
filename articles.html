@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="English learning articles and tips from ECH Myanmar — practical advice for Myanmar students learning to speak English confidently." />
+  <title>Articles — ECH Myanmar</title>
+  <link rel="icon" sizes="48x48" href="echlogo.png" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="articles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">
+        <img src="logo.png" alt="ECH Myanmar Logo" class="nav-logo" />
+        <div class="brand-text">
+          <span>ECH Myanmar</span>
+          <span>ECHMyanmar.com</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="poem.html">Poems</a></li>
+        <li><a href="articles.html"active='class'>Articles</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="mark.html">Game</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-dropdown" id="navDropdown">
+    <a href="index.html">Home</a>
+    <a href="poem.html">Poems</a>
+    <a href="articles.html" active="class" >Articles</a>
+    <a href="videos.html">Videos</a>
+    <a href="news.html">News</a>
+    <li><a href="mark.html">Game</a></li>
+    <a href="about.html">About</a>
+    <a href="attendance.html">Attendance</a>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="articles-hero">
+      <div class="hero-floaters" aria-hidden="true">
+        <div class="floater">✍️</div>
+        <div class="floater">📖</div>
+        <div class="floater">💡</div>
+        <div class="floater">📝</div>
+        <div class="floater">🖊️</div>
+      </div>
+      <div class="container">
+        <div class="hero-badge">✍️ Learning Resources</div>
+        <h1>Read Your Way to<br><span>Better English</span></h1>
+        <p>Practical tips, conversation strategies, and guides — written for Myanmar learners at every level.</p>
+        <div class="hero-stats">
+          <div class="hero-stat">📄 <strong>6</strong> Articles</div>
+          <div class="hero-stat">📂 <strong>6</strong> Topics</div>
+          <div class="hero-stat">🎓 All Levels</div>
+          <div class="hero-stat">🆕 Updated <strong>2026</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Featured Article ── -->
+    <section class="section-featured">
+      <div class="container">
+        <div class="featured-article"
+             data-cat="top-tip"
+             data-chip="chip-top-tip"
+             data-label="⭐ Top Tip"
+             data-title="5 Secrets to Getting the Most from Chat Hours"
+             data-date="May 10, 2026"
+             data-read="5 min read"
+             data-content="Chat Hours can feel intimidating at first — but with the right mindset, every session becomes a breakthrough. Here are five strategies that every ECH member uses to level up fast.
+
+1. Speak first, perfect later — don't wait until your grammar is perfect. The act of speaking is the practice.
+
+2. Prepare one topic — come to each session with one subject you want to talk about confidently.
+
+3. Ask questions actively — the best conversationalists are curious, not lecturers.
+
+4. Listen as much as you speak — noticing how others phrase things is half the learning.
+
+5. Reflect after each session — write down two new phrases you heard and practice them that evening.">
+          <div class="featured-visual" aria-hidden="true">💬</div>
+          <div class="featured-body">
+            <div class="featured-eyebrow">⭐ Staff Pick · Top Tip</div>
+            <div class="featured-title">5 Secrets to Getting the Most from Chat Hours</div>
+            <div class="featured-excerpt">Chat Hours can feel intimidating at first — but with the right mindset, every session becomes a breakthrough. Here are five strategies that every ECH member uses to level up fast: speak first, prepare one topic, ask questions, listen actively, and reflect after every session.</div>
+            <div class="featured-footer">
+              <div class="art-meta">
+                <span>📅 May 10, 2026</span>
+                <span>⏱ 5 min read</span>
+              </div>
+              <span class="art-read">Read Article →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Article Library ── -->
+    <section>
+      <div class="container">
+        <div class="section-header section-header--left">
+          <span class="section-eyebrow">Article Library</span>
+          <h2 class="section-title">Browse All Articles</h2>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Articles</button>
+            <button class="filter-btn" data-filter="top-tip">⭐ Top Tip</button>
+            <button class="filter-btn" data-filter="pronunciation">🗣️ Pronunciation</button>
+            <button class="filter-btn" data-filter="vocabulary">📚 Vocabulary</button>
+            <button class="filter-btn" data-filter="confidence">💪 Confidence</button>
+            <button class="filter-btn" data-filter="grammar">📝 Grammar</button>
+            <button class="filter-btn" data-filter="daily-habits">⏰ Daily Habits</button>
+          </div>
+          <div class="article-count">Showing <span id="visibleCount">6</span> of 6 articles</div>
+        </div>
+
+        <!-- Grid -->
+        <div class="articles-grid" id="articleGrid">
+
+        
+          <!-- 2: Pronunciation Guide -->
+          <article class="art-card"
+                   data-cat="pronunciation"
+                   data-chip="chip-pronunciation"
+                   data-label="🗣️ Pronunciation"
+                   data-title="How to Fix Your English Pronunciation in 30 Days"
+                   data-date="April 28, 2026"
+                   data-read="6 min read"
+                   data-content="Good pronunciation is not about sounding like a native — it's about being understood clearly. Myanmar learners often struggle with specific sounds like the 'th' in 'the' or the 'v' vs 'b' distinction.
+
+The 30-Day Strategy:
+• Shadow Practice: Find a 2-minute English clip. Listen to a sentence, pause, and repeat it exactly — matching the speed and rhythm.
+• Record Yourself: You cannot fix what you cannot hear. Record your voice and compare it to the original.
+• Focus on Mouth Position:
+  - The 'th' sound: Place your tongue between your teeth and blow.
+  - The 'v' sound: Use your top teeth on your lower lip.
+
+Consistency is key: 10 minutes of daily 'shadowing' beats 2 hours of passive listening once a week.
+How to Fix Your English Pronunciation in 30 Days
+Good pronunciation isn’t about sounding like a native; it’s about being understood clearly. For many learners in Myanmar (and across Asia), the main trouble spots are just a few sounds: the “th” in the, the “v” vs “b” difference, and the way English syllables are stressed and connected. With a focused 30‑day plan, you can make your speech much clearer and more natural.
+
+1. Understand what you’re really fixing
+Before you start, reset your goal:
+
+Target clarity, not an accent.
+
+Focus on common problem sounds:
+
+“th” (as in the, thing, with)
+
+“v” vs “b” (as in very vs berry, seven vs seven)
+
+Short vowels like the “a” in cat and “i” in hit
+
+Word stress (e.g., today vs today, photograph vs photographer)
+
+By narrowing your focus, you avoid trying to “fix everything at once” and instead spot‑treat the sounds that cause misunderstandings.
+
+2. The 30‑Day Shadowing Plan
+Shadowing means listening to a short English clip, then repeating it out loud in sync with the speaker, trying to copy the rhythm, speed, and sounds. Use this pattern every day:
+
+Day 1–7 (setup and basics)
+
+Choose one 60–90‑second clip (YouTube, Netflix, or a podcast with clear speech).
+
+Break it into 1–2 short sentences.
+
+Listen to each sentence 2–3 times, then pause and repeat, focusing on copying the speaker’s speed and tone, not just the words.
+
+Day 8–14 (adding recording)
+
+Do the same shadowing, but now record yourself.
+
+Play it back and compare:
+
+Are your “th” sounds actually using your tongue between your teeth?
+
+Does “very” sound like berry or clearly like very?
+
+If a sound is wrong, repeat it 5–10 times in a row, then try the full sentence again.
+
+Day 15–21 (sentence focus)
+
+Shadow longer sentences (8–12 words).
+
+Focus on linking sounds:
+
+“I’m going to school” becomes “I’m gonna school” in natural speech.
+
+Copy how the speaker groups words together; this fixes the “robot voice” effect.
+
+Day 22–30 (fluency and daily English)
+
+Choose slightly more natural or “real‑life” clips (short vlogs, interviews, or scenes from sitcoms).
+
+Shadow for 10–15 minutes, then speak on your own for 2–3 minutes using the same phrases you practiced.
+
+Example: if the clip is about “my weekend,” you can record a short speech about your weekend using the same rhythm and vocabulary.
+
+The key is to do 10 minutes every day instead of 1–2 “big” marathon sessions per week. Daily practice trains your muscles and your ear together.
+
+3. Fixing the “th” and “v” sounds
+These are two of the biggest pain points for Myanmar learners. Here’s how to build them step‑by‑step:
+
+/θ/ and /ð/ – the “th” sounds
+English has two different “th” sounds:
+
+Unvoiced /θ/ in think, thing, three
+
+Voiced /ð/ in this, that, the
+
+Step‑by‑step practice:
+
+Place the tip of your tongue lightly between your front teeth.
+
+Blow air through your mouth while keeping your vocal cords relaxed for /θ/ (like a hiss).
+
+For /ð/, keep the same tongue position, but add voice (feel a buzz in your throat).
+
+Drill ideas:
+
+Repeat: think, thing, thought, three (focus on clear /θ/).
+
+Then repeat: this, that, with, mother (focus on /ð/).
+
+Combine: “This thing is thick” several times, slowly, then faster.
+
+Many Myanmar speakers replace “th” with “t” or “d”. If you normally say “dis” for “this”, the first task is to feel your tongue between your teeth, not behind them.
+
+/v/ vs /b/ – the lip–teeth difference
+Myanmar Burmese often mixes v and b because the “v” sound is unusual.
+
+/v/: top teeth on lower lip, a soft buzz (like a weak “f”).
+
+/b/: both lips close and pop, like in ball or buy.
+
+How to practice:
+
+Put your top teeth on your lower lip.
+
+Say “vvvv” slowly, keeping teeth on lips.
+
+Then say “b”: your lips close and open, but teeth are not involved.
+
+Mini‑drill:
+
+very – berry
+
+seven – seven (check if the first vowel glides correctly)
+
+love – above (end the word with /v/, not /b/)
+
+Record yourself repeating these pairs and circle which ones the listener would misunderstand.
+
+4. Train your mouth and ears together
+Even if you know the theory, your mouth needs muscle memory. Try these short daily exercises:
+
+Mouth position checks:
+
+Stand in front of a mirror and say “the very thing” 5 times, watching your tongue and lips.
+
+For “very”, make sure your bottom lip touches your top teeth; for “bury”, your lips pucker.
+
+Ear‑training tricks:
+
+Play a short sentence and pause and write it down. Then play it again and check your spelling.
+
+If you wrote “dis berry thing” when the speaker said “this very thing”, you’ve exposed your problem sounds.
+
+Tongue twisters (slowly):
+
+“This thing is thick and thin.”
+
+“Very, very, very, very…” (repeat faster each time).
+
+Start slow and focus on accuracy; speed will come later.
+
+5. Make it part of your daily life
+To make your 30‑day progress stick, link pronunciation practice to real‑life habits:
+
+Speaking with a phone:
+
+When you call family or friends in English, use the same phrases you practiced (e.g., “I’m going to…”, “I was thinking…”).
+
+Even if you falter, repeat the sentence once more with clearer sounds.
+
+Dictation from media:
+
+Watch 1–2 short English clips per day and write down what you hear.
+
+Compare your text with subtitles; any mismatch is a clue about your pronunciation or listening.
+
+Self‑explaining in English:
+
+Describe your day out loud in English: “I wake up. I eat breakfast. I go to work…”
+
+Use the same rhythm and linking you practiced in shadowing.
+
+6. Why 10 minutes a day beats 2 hours once a week
+The brain and mouth learn pronunciation best through short, frequent repetition, not long, irregular sessions. Ten minutes daily:
+
+Builds muscle memory for sounds like “th” and “v”.
+
+Trains your ear to notice the difference between your voice and a clear model.
+
+Lets you spot mistakes quickly and fix them before they “stick.”
+
+By day 30, you won’t sound like a perfect native, but you will be easier to understand, and your confidence will rise every time someone says, “Oh, I understood that clearly.”
+
+If you stick to this plan, you’ll move from “I’m shy to speak because of my pronunciation” to “I know how to fix my sounds and I’m practicing every day.” That shift is worth far more than any accent.">
+            <span class="art-chip chip-pronunciation">🗣️ Pronunciation</span>
+            <div class="art-title">How to Fix Your English Pronunciation in 30 Days</div>
+            <div class="art-excerpt">Stop struggling with 'th' and 'v' sounds. Use the Shadowing technique to sound clearer in just one month.</div>
+            <div class="art-footer">
+              <span class="art-date">📅 Apr 28, 2026</span>
+              <div class="art-actions">
+                <span class="read-time">6 min</span>
+                <button class="btn-share" aria-label="Copy link to article" title="Copy link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span class="share-text">Share</span>
+                </button>
+                <span class="art-read">Read →</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3: Useful Phrases -->
+          <article class="art-card"
+                   data-cat="vocabulary"
+                   data-chip="chip-vocabulary"
+                   data-label="📚 Vocabulary"
+                   data-title="20 Useful Phrases for Every Chat Hour Session"
+                   data-date="April 14, 2026"
+                   data-read="4 min read"
+                   data-content="Walking into a conversation is easier when you have the right tools. Here are phrases to help you navigate any ECH session:
+
+To Agree & Build:
+• 'That's a great point — could you elaborate on that?'
+• 'I completely agree, and I'd add that...'
+
+To Ask for Clarification:
+• 'I'm not sure I understand — could you say that differently?'
+• 'What do you mean exactly by...?'
+
+To Share Your View:
+• 'From my perspective...'
+• 'In my experience, I've found that...'
+
+Tip: Memorize five of these per week and try to use them at least twice in your next session.">
+            <span class="art-chip chip-vocabulary">📚 Vocabulary</span>
+            <div class="art-title">20 Useful Phrases for Every Chat Hour Session</div>
+            <div class="art-excerpt">Don't get stuck in silence. Use these 20 proven phrases to keep the conversation flowing naturally.</div>
+            <div class="art-footer">
+              <span class="art-date">📅 Apr 14, 2026</span>
+              <div class="art-actions">
+                <span class="read-time">4 min</span>
+                <button class="btn-share" aria-label="Copy link to article" title="Copy link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span class="share-text">Share</span>
+                </button>
+                <span class="art-read">Read →</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4: Confidence -->
+          <article class="art-card"
+                   data-cat="confidence"
+                   data-chip="chip-confidence"
+                   data-label="💪 Confidence"
+                   data-title="Overcoming the Fear of Speaking English in Public"
+                   data-date="March 30, 2026"
+                   data-read="7 min read"
+                   data-content="Fear of making mistakes is the number one thing holding Myanmar learners back. But here's the truth: every fluent English speaker you admire made thousands of mistakes before they got there. The difference is they kept going.
+
+The science of language acquisition shows that your brain learns fastest through comprehensible input and low-anxiety speaking practice — exactly what ECH sessions are designed to provide.
+
+Practical steps to build confidence:
+1. Start small — greet someone in English today, just one sentence.
+2. Embrace mistakes — every mistake is a data point, not a failure.
+3. Prepare a 'safety sentence' — have one sentence ready for when you freeze: 'That's a really interesting question, let me think for a second.'
+4. Use ECH sessions as your safe space — everyone there is learning too.
+5. Track your wins — write one thing you said confidently after every session.
+
+Small wins accumulate: greet someone today, answer a question tomorrow, give a short speech next month. Confidence is built through action, not waiting.">
+            <span class="art-chip chip-confidence">💪 Confidence</span>
+            <div class="art-title">Overcoming the Fear of Speaking English in Public</div>
+            <div class="art-excerpt">Fear of making mistakes is the number one thing holding Myanmar learners back. Every fluent speaker you admire made thousands of mistakes first — the difference is they kept going.</div>
+            <div class="art-footer">
+              <span class="art-date">📅 Mar 30, 2026</span>
+              <div class="art-actions">
+                <span class="read-time">7 min</span>
+                <button class="btn-share" aria-label="Copy link to article" title="Copy link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span class="share-text">Share</span>
+                </button>
+                <span class="art-read">Read →</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5: Grammar -->
+          <article class="art-card"
+                   data-cat="grammar"
+                   data-chip="chip-grammar"
+                   data-label="📝 Grammar"
+                   data-title="English Tenses Made Simple for Myanmar Learners"
+                   data-date="March 15, 2026"
+                   data-read="5 min read"
+                   data-content="English has 12 main tenses, but the good news? In everyday conversation, you only need to master four to sound natural: simple present, simple past, present continuous, and present perfect.
+
+The Big Four:
+• Simple Present — 'I work at a school.' (facts and routines)
+• Simple Past — 'I worked yesterday.' (completed actions)
+• Present Continuous — 'I am working right now.' (happening now)
+• Present Perfect — 'I have worked here for two years.' (past with present relevance)
+
+Focus on these four first. Everything else is an extension of these patterns.
+
+A quick trick for choosing the right tense: ask yourself, 'When did this happen relative to now?' If it's a habit → simple present. If it finished → simple past. If it's ongoing → present continuous. If it connects past to now → present perfect.
+
+Practice tip: write 3 sentences daily, one in each of the four tenses. After two weeks, they'll feel automatic.">
+            <span class="art-chip chip-grammar">📝 Grammar</span>
+            <div class="art-title">English Tenses Made Simple for Myanmar Learners</div>
+            <div class="art-excerpt">English has 12 tenses but you only need 4 to sound natural in conversation: simple present, simple past, present continuous, and present perfect.</div>
+            <div class="art-footer">
+              <span class="art-date">📅 Mar 15, 2026</span>
+              <div class="art-actions">
+                <span class="read-time">5 min</span>
+                <button class="btn-share" aria-label="Copy link to article" title="Copy link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span class="share-text">Share</span>
+                </button>
+                <span class="art-read">Read →</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6: Daily Habits -->
+          <article class="art-card"
+                   data-cat="daily-habits"
+                   data-chip="chip-daily-habits"
+                   data-label="⏰ Daily Habits"
+                   data-title="Build an English Habit in Just 15 Minutes a Day"
+                   data-date="March 2, 2026"
+                   data-read="4 min read"
+                   data-content="Consistency beats intensity. Fifteen focused minutes every day will improve your English faster than two hours on the weekend.
+
+Here's a simple daily routine that works:
+
+Minutes 1–5: Read one English paragraph aloud. Choose anything — a news headline, a book page, or an ECH article. The goal is to activate your mouth and brain together.
+
+Minutes 6–10: Listen to a short English audio clip and repeat three sentences exactly as you heard them. YouTube, podcasts, or the ECH video library all work perfectly.
+
+Minutes 11–15: Write three sentences about your day using new words you've learned this week. Connecting new vocabulary to your real life is the fastest way to make it stick.
+
+How to keep the streak going:
+• Tell an ECH friend about your habit — accountability doubles follow-through.
+• Use a habit tracker app or just tick a calendar.
+• Don't break the chain: even 5 minutes on a busy day counts.
+
+Language is built one day at a time. Start today.">
+            <span class="art-chip chip-daily-habits">⏰ Daily Habits</span>
+            <div class="art-title">Build an English Habit in Just 15 Minutes a Day</div>
+            <div class="art-excerpt">Consistency beats intensity. Fifteen focused minutes every day will improve your English faster than two hours on the weekend. Here's a simple daily routine that works.</div>
+            <div class="art-footer">
+              <span class="art-date">📅 Mar 2, 2026</span>
+              <div class="art-actions">
+                <span class="read-time">4 min</span>
+                <button class="btn-share" aria-label="Copy link to article" title="Copy link">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                  <span class="share-text">Share</span>
+                </button>
+                <span class="art-read">Read →</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Motivational Quote ── -->
+    <section>
+      <div class="container container--narrow">
+        <div class="quote-banner">
+          <div class="quote-text">"The limits of my language mean the limits of my world."</div>
+          <div class="quote-author">— Ludwig Wittgenstein · Shared at ECH Myanmar</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="section-cta">
+      <div class="container">
+        <div class="glass articles-cta">
+          <div>
+            <h3>Want to write an article?</h3>
+            <p>Share your English learning experience or tips with the ECH Myanmar community. We welcome contributions from all members at both UCSTgi and MAEU.</p>
+          </div>
+          <a href="about.html" class="btn btn-primary">📝 Submit Article</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Article Modal ── -->
+  <div class="modal-overlay" id="articleModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+      <div class="modal-header">
+        <span class="art-chip" id="modalChip"></span>
+        <div class="modal-header-actions">
+          <button class="btn-share btn-share--modal" id="modalShareBtn" aria-label="Copy link to this article">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            <span class="share-text">Copy Link</span>
+          </button>
+          <button class="modal-close" id="modalClose" aria-label="Close article">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-meta" id="modalMeta"></div>
+        <div class="modal-content" id="modalContent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="echlogo.png" alt="ECH Myanmar Logo" class="footer-logo" />
+      ECH Myanmar
+    </div>
+    <p>UCSTgi × MAEU Official University Club &nbsp;|&nbsp; © 2026 English Chat Hours Myanmar. <a href="https://echmyanmar.com">ECHMyanmar.com</a></p>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+  <script>
+    /* ── Helpers ── */
+    function slugify(title) {
+      return encodeURIComponent(title.trim().toLowerCase().replace(/\s+/g, '-'));
+    }
+
+    function buildShareUrl(title) {
+      return `${window.location.origin}${window.location.pathname}?article=${slugify(title)}`;
+    }
+
+    async function copyToClipboard(text, btn) {
+      const label = btn.querySelector('.share-text');
+      const original = label ? label.textContent : null;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.classList.add('btn-share--copied');
+        if (label) label.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.classList.remove('btn-share--copied');
+          if (label) label.textContent = original;
+        }, 2000);
+      } catch {
+        /* Fallback for older browsers */
+        const el = document.createElement('textarea');
+        el.value = text;
+        el.style.position = 'fixed';
+        el.style.opacity = '0';
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        btn.classList.add('btn-share--copied');
+        if (label) label.textContent = 'Copied!';
+        setTimeout(() => {
+          btn.classList.remove('btn-share--copied');
+          if (label) label.textContent = original;
+        }, 2000);
+      }
+    }
+
+    /* ── Filter ── */
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const artCards   = document.querySelectorAll('.art-card');
+    const countEl    = document.getElementById('visibleCount');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        let visible = 0;
+        artCards.forEach(card => {
+          const show = f === 'all' || card.dataset.cat === f;
+          card.classList.toggle('hidden', !show);
+          if (show) visible++;
+        });
+        countEl.textContent = visible;
+      });
+    });
+
+    /* ── Modal ── */
+    const modal        = document.getElementById('articleModal');
+    const modalChip    = document.getElementById('modalChip');
+    const modalTitle   = document.getElementById('modalTitle');
+    const modalMeta    = document.getElementById('modalMeta');
+    const modalContent = document.getElementById('modalContent');
+    const closeBtn     = document.getElementById('modalClose');
+    const modalShareBtn = document.getElementById('modalShareBtn');
+
+    function openModal(el) {
+      modalChip.className    = 'art-chip ' + el.dataset.chip;
+      modalChip.textContent  = el.dataset.label;
+      modalTitle.textContent = el.dataset.title;
+      modalMeta.innerHTML    = `<span>📅 ${el.dataset.date}</span><span>⏱ ${el.dataset.read}</span>`;
+      modalContent.innerText = el.dataset.content;
+      modal.classList.add('open');
+      document.body.classList.add('modal-open');
+
+      /* Update browser URL without reload so the link is shareable */
+      history.replaceState(null, '', buildShareUrl(el.dataset.title));
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.classList.remove('modal-open');
+      history.replaceState(null, '', window.location.pathname);
+    }
+
+    /* Open modal on card click (but not on the share button itself) */
+    artCards.forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('.btn-share')) return;
+        openModal(card);
+      });
+    });
+
+    /* Featured article click */
+    const featuredCard = document.querySelector('.featured-article');
+    if (featuredCard) {
+      featuredCard.addEventListener('click', () => openModal(featuredCard));
+    }
+
+    /* Close modal */
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* Share button inside modal */
+    modalShareBtn.addEventListener('click', () => {
+      copyToClipboard(window.location.href, modalShareBtn);
+    });
+
+    /* Share buttons on cards */
+    document.querySelectorAll('.art-card .btn-share').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const card = btn.closest('.art-card');
+        copyToClipboard(buildShareUrl(card.dataset.title), btn);
+      });
+    });
+
+    /* ── Deep-link: auto-open article from ?article= param ── */
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const target = params.get('article');
+      if (!target) return;
+
+      const all = document.querySelectorAll('.art-card, .featured-article');
+      for (const el of all) {
+        if (slugify(el.dataset.title) === target) {
+          openModal(el);
+          break;
+        }
+      }
+    })();
+  </script>
+</body>
+</html>

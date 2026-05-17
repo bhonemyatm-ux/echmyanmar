@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Guess Game</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .game-container {
+      width: 100%;
+      max-width: 420px;
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-rows: repeat(6, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .cell {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      border: 2px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    .correct {
+      background: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
+
+    .present {
+      background: #fbc02d;
+      color: white;
+      border-color: #fbc02d;
+    }
+
+    .wrong {
+      background: #9e9e9e;
+      color: white;
+      border-color: #9e9e9e;
+    }
+
+    .controls {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    input {
+      flex: 1;
+      padding: 12px;
+      font-size: 1rem;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      text-transform: lowercase;
+    }
+
+    button {
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      min-height: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .new-game {
+      width: 100%;
+      background: #1976d2;
+    }
+
+    @media (max-width: 500px) {
+      .cell {
+        font-size: 1.2rem;
+      }
+
+      button,
+      input {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>Word Guess Game</h1>
+
+    <!-- Game Grid -->
+    <div class="grid" id="grid"></div>
+
+    <!-- Input Controls -->
+    <div class="controls">
+      <input
+        type="text"
+        id="guessInput"
+        maxlength="5"
+        placeholder="Enter 5-letter word"
+      />
+      <button id="guessBtn">Guess</button>
+    </div>
+
+    <!-- Message Area -->
+    <div class="message" id="message"></div>
+
+    <!-- Restart Button -->
+    <button class="new-game" id="newGameBtn">New Game</button>
+  </div>
+
+  <script>
+    // =========================
+    // WORD LIST
+    // =========================
+    const words = [
+      "apple",
+      "table",
+      "cloud",
+      "floor",
+      "river",
+      "woman",
+      "bread",
+      "light",
+      "money",
+      "phone",
+      "happy",
+      "green",
+      "world",
+      "music",
+      "peace"
+    ];
+
+    // =========================
+    // GAME VARIABLES
+    // =========================
+    let secretWord = "";
+    let currentRow = 0;
+    let gameOver = false;
+
+    const maxRows = 6;
+    const wordLength = 5;
+
+    const grid = document.getElementById("grid");
+    const guessInput = document.getElementById("guessInput");
+    const guessBtn = document.getElementById("guessBtn");
+    const newGameBtn = document.getElementById("newGameBtn");
+    const message = document.getElementById("message");
+
+    // =========================
+    // CREATE GRID
+    // =========================
+    function createGrid() {
+      grid.innerHTML = "";
+
+      for (let r = 0; r < maxRows; r++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+
+        for (let c = 0; c < wordLength; c++) {
+          const cell = document.createElement("div");
+          cell.classList.add("cell");
+          cell.id = `cell-${r}-${c}`;
+          row.appendChild(cell);
+        }
+
+        grid.appendChild(row);
+      }
+    }
+
+    // =========================
+    // START NEW GAME
+    // =========================
+    function startGame() {
+      // Pick random word
+      secretWord = words[Math.floor(Math.random() * words.length)];
+
+      // Reset game state
+      currentRow = 0;
+      gameOver = false;
+
+      // Clear UI
+      message.textContent = "";
+      guessInput.value = "";
+      guessInput.disabled = false;
+      guessBtn.disabled = false;
+
+      // Rebuild grid
+      createGrid();
+
+      console.log("Secret Word:", secretWord); // For testing
+    }
+
+    // =========================
+    // HANDLE GUESS
+    // =========================
+    function submitGuess() {
+      if (gameOver) return;
+
+      let guess = guessInput.value.toLowerCase().trim();
+
+      // Validate input
+      if (guess.length !== 5) {
+        message.textContent = "Please enter a 5-letter word.";
+        return;
+      }
+
+      // Fill row with letters
+      for (let i = 0; i < wordLength; i++) {
+        const cell = document.getElementById(`cell-${currentRow}-${i}`);
+        const letter = guess[i];
+
+        cell.textContent = letter;
+
+        // Correct position
+        if (letter === secretWord[i]) {
+          cell.classList.add("correct");
+        }
+        // Correct letter, wrong position
+        else if (secretWord.includes(letter)) {
+          cell.classList.add("present");
+        }
+        // Letter not in word
+        else {
+          cell.classList.add("wrong");
+        }
+      }
+
+      // Check win
+      if (guess === secretWord) {
+        message.textContent = "Correct!";
+        endGame();
+        return;
+      }
+
+      currentRow++;
+
+      // Check lose
+      if (currentRow >= maxRows) {
+        message.textContent = `Game over! Word was "${secretWord.toUpperCase()}".`;
+        endGame();
+      }
+
+      // Clear input
+      guessInput.value = "";
+    }
+
+    // =========================
+    // END GAME
+    // =========================
+    function endGame() {
+      gameOver = true;
+      guessInput.disabled = true;
+      guessBtn.disabled = true;
+    }
+
+    // =========================
+    // EVENT LISTENERS
+    // =========================
+
+    // Guess button click
+    guessBtn.addEventListener("click", submitGuess);
+
+    // Press Enter to submit
+    guessInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        submitGuess();
+      }
+    });
+
+    // Restart game
+    newGameBtn.addEventListener("click", startGame);
+
+    // =========================
+    // INITIALIZE GAME
+    // =========================
+    startGame();
+  </script>
+
+</body>
+</html>
