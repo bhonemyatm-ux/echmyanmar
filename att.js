@@ -381,8 +381,7 @@
       totalSessionsEl.textContent = totalSessions;
       dashboardEl.style.display = 'block';// Dashboard ကို ပေါ်အောင်လုပ်ခြင်း
     }
-    }
-
+    
     //Export CSV (ဒေတာများကို Excel/CSV ဖိုင်အဖြစ် downloadခြင်း)
     if (exportBtn) {
       exportBtn.onclick = () => {
