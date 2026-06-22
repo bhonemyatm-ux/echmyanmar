@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HST Myanmar — Member QR Cards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #0071e3;
+      --blue-dark: #0F4C81;
+      --blue-light: rgba(0,113,227,0.08);
+      --blue-border: rgba(0,113,227,0.22);
+      --bg: #f5f5f7;
+      --card-bg: #ffffff;
+      --text: #1d1d1f;
+      --text-secondary: #3d3d3f;
+      --text-muted: #6e6e73;
+      --border: rgba(0,0,0,0.08);
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-hover: 0 8px 28px rgba(0,0,0,0.11);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Page Header ── */
+    .page-header {
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .org-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 0.85rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .page-header p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* ── Controls ── */
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      font-family: var(--font);
+      cursor: pointer;
+      border: none;
+      transition: all 0.22s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(0,113,227,0.28);
+    }
+    .btn-primary:hover { background: #0077ed; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,113,227,0.34); }
+
+    .btn-secondary {
+      background: rgba(0,0,0,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: rgba(0,0,0,0.09); transform: translateY(-1px); }
+
+    .count-badge {
+      background: var(--blue-light);
+      border: 1px solid var(--blue-border);
+      color: var(--blue);
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.35rem 0.85rem;
+      border-radius: 100px;
+    }
+
+    /* ── Grid ── */
+    .grid-wrapper {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue) 0%, #34aadc 100%);
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* Special styling for Executive Director */
+    .card.featured {
+      border-color: var(--blue-border);
+      background: linear-gradient(135deg, rgba(0,113,227,0.04) 0%, rgba(52,170,220,0.04) 100%);
+    }
+    .card.featured::before {
+      height: 4px;
+    }
+
+    .card-id {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--blue);
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
+    .qr-wrapper {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.85rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .qr-wrapper img {
+      display: block;
+      border-radius: 6px;
+    }
+
+    .member-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+      line-height: 1.3;
+    }
+
+    .member-role {
+      font-size: 0.66rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .role-director { color: var(--blue); }
+    .role-exec { color: #0F4C81; font-weight: 700; }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      padding: 1rem 2rem;
+      background: rgba(255,255,255,0.6);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .stat strong {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -0.03em;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: white; }
+      .page-header { position: static; background: white; border: none; backdrop-filter: none; }
+      .controls, .stats-bar { display: none; }
+      .grid-wrapper { padding: 0.5rem; }
+      .grid { grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+      .card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      .card::before { display: none; }
+      .card:hover { transform: none; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1100px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 860px)  { .grid { grid-template-columns: repeat(3, 1fr); } }
+    @media (max-width: 600px)  { .grid { grid-template-columns: repeat(2, 1fr); } .grid-wrapper { padding: 1rem; } }
+    @media (max-width: 400px)  { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div class="page-header">
+    <div class="org-badge">🎓 Official Member Cards</div>
+    <h1>High Schooler's Tool Myanmar</h1>
+    <p id="subtitle">Loading member QR cards…</p>
+    <div class="controls">
+      <button class="btn btn-primary" onclick="window.print()">🖨️ Print All Cards</button>
+      <button class="btn btn-secondary" onclick="downloadAll()">⬇️ Save as PDF</button>
+      <span class="count-badge" id="countBadge">50 Members</span>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><strong id="statTotal">50</strong> Total Members</div>
+    <div class="stat"><strong id="statDirectors">—</strong> Directors</div>
+    <div class="stat"><strong id="statVolunteers">—</strong> Volunteers</div>
+    <div class="stat"><strong>2026</strong> Cohort</div>
+  </div>
+
+  <div class="grid-wrapper">
+    <div class="grid" id="qrGrid"></div>
+  </div>
+
+  <script>
+    const members = [
+      { id: "HSTMM/OSEA/2026/001",   name: "Bhone Myat Min",          role: "Executive Director" },
+      { id: "HSTMM/DOA/2026/001",    name: "Kyaw Kyaw Aung",           role: "Director" },
+      { id: "HSTMM/DOA/2026/002",    name: "Thet Nway Hnaung Nge",     role: "Assistant Director" },
+      { id: "HSTMM/DBDER/2026/001",  name: "Htun Htet Aung",           role: "Director" },
+      { id: "HSTMM/DBDER/2026/002",  name: "Thet Nway Hnaung Oo",      role: "Assistant Director" },
+      { id: "HSTMM/DBDER/2026/003",  name: "Yoon Eaint Thu",           role: "Member" },
+      { id: "HSTMM/DBDER/2026/004",  name: "Su Pyae Pyae Phyoe",       role: "Member" },
+      { id: "HSTMM/DBDER/2026/005",  name: "Yin Yin Soe",              role: "Member" },
+      { id: "HSTMM/DBDER/2026/006",  name: "Hnin Nu Naing",            role: "Member" },
+      { id: "HSTMM/DBDER/2026/007",  name: "Hom Tip",                  role: "Member" },
+      { id: "HSTMM/DBDER/2026/008",  name: "Thet Htet Myat Noe",       role: "Member" },
+      { id: "HSTMM/DBDER/2026/009",  name: "Myat Phone Kyaw",          role: "Member" },
+      { id: "HSTMM/DBDER/2026/010",  name: "Hein Htut Wai Yan",        role: "Member" },
+      { id: "HSTMM/DBDER/2026/011",  name: "Khant Zayar Aung",         role: "Member" },
+      { id: "HSTMM/DBDER/2026/012",  name: "Wint Moe Ekaryi Tint",     role: "Member" },
+      { id: "HSTMM/DTAS/2026/001",   name: "Kyawt Shin Thant",         role: "Director" },
+      { id: "HSTMM/DTAS/2026/002",   name: "Thet Htar Aye",            role: "Member" },
+      { id: "HSTMM/DTAS/2026/003",   name: "Khin Thu Ta",              role: "Member" },
+    ];
+
+    const TOTAL = 50;
+    const grid = document.getElementById("qrGrid");
+
+    let directorCount = 0;
+    let volunteerCount = 0;
+
+    for (let i = 0; i < TOTAL; i++) {
+      const m = members[i] || {
+        id: `HSTMM/GEN/2026/${String(i + 1).padStart(3, "0")}`,
+        name: "HST Member",
+        role: "Volunteer"
+      };
+
+      const isExec = m.role === "Executive Director";
+      const isDirector = m.role === "Director" || m.role === "Assistant Director";
+      const isVolunteer = m.role === "Volunteer";
+
+      if (isDirector || isExec) directorCount++;
+      if (isVolunteer) volunteerCount++;
+
+      const verifyLink = `https://hstmm.com/verifyid.html?id=${encodeURIComponent(m.id)}`;
+      const qrURL = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&color=0F4C81&bgcolor=ffffff&data=${encodeURIComponent(verifyLink)}`;
+
+      const roleClass = isExec ? "role-exec" : isDirector ? "role-director" : "";
+
+      const card = document.createElement("div");
+      card.className = `card${isExec ? " featured" : ""}`;
+      card.innerHTML = `
+        <div class="card-id">${m.id}</div>
+        <div class="qr-wrapper">
+          <img src="${qrURL}" width="140" height="140" loading="lazy" alt="QR for ${m.name}" />
+        </div>
+        <div class="member-name">${m.name}</div>
+        <div class="member-role ${roleClass}">${m.role}</div>
+      `;
+      grid.appendChild(card);
+    }
+
+    // Update stats
+    document.getElementById("subtitle").textContent = `Official Member QR Cards — ${TOTAL} Members · 2026 Cohort`;
+    document.getElementById("countBadge").textContent = `${TOTAL} Members`;
+    document.getElementById("statTotal").textContent = TOTAL;
+    document.getElementById("statDirectors").textContent = directorCount;
+    document.getElementById("statVolunteers").textContent = volunteerCount;
+
+    function downloadAll() {
+      window.print();
+    }
+  </script>
+
+</body>
+</html>
